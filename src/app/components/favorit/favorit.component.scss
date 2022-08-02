@@ -1,9 +1,8 @@
 @import '../../../styles.scss';
 .image-fav {
-   width: 120px;
    aspect-ratio: 4/3;
 }
-.item {
+.card {
    cursor: pointer;
    @include transition;
    &:hover {

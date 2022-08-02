@@ -23,4 +23,7 @@ export class FavoritComponent implements OnInit {
       });
     });
   }
+  trackfav(index: number, favFood: any): number {
+    return favFood.index;
+  }
 }
