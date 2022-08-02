@@ -1,0 +1,62 @@
+<section class="container py-5">
+  <input
+    list="search"
+    class="form-select form-select-sm"
+    placeholder="Type to search..."
+    (change)="getSearch($event)"
+  />
+  <datalist id="search">
+    <option *ngFor="let item of searchList" [value]="item"></option>
+  </datalist>
+
+  <div
+    class="row gy-3 row-cols-1 row-cols-md-2 row-cols-lg-3 mt-5"
+    *ngIf="!isLoading; else loading"
+  >
+    <div class="col" *ngFor="let recipie of recipes; trackBy: trackFood">
+      <div class="card h-100">
+        <div
+          class="image overflow-hidden"
+          [routerLink]="['/details', recipie.recipe_id]"
+        >
+          <img
+            loading="lazy"
+            class="card-img-top w-100"
+            [src]="recipie.image_url"
+            [title]="recipie.title"
+            [alt]="recipie.title"
+          />
+        </div>
+        <div class="card-body text-center vstack justify-content-between">
+          <div>
+            <h2 class="h6 card-title fw-semibold">{{ recipie.title }}</h2>
+            <p class="text-muted card-subtitle">{{ recipie.publisher }}</p>
+          </div>
+          <i
+            *ngIf="isLogin"
+            [ngClass]="{
+              'un-select': !favFoodId.has(recipie.recipe_id),
+              select: favFoodId.has(recipie.recipe_id)
+            }"
+            class="fa-solid fa-heart heart-fave"
+            (click)="changFav(recipie.recipe_id)"
+          ></i>
+        </div>
+        <div class="card-footer">
+          <a
+            [href]="recipie.source_url"
+            target="_blank"
+            class="w-100 btn btn-sm btn-danger"
+            type="button"
+            >Source</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <div class="text-center my-5">
+      <i class="fas fa-spinner fa-spin fa-4x"></i>
+    </div>
+  </ng-template>
+</section>

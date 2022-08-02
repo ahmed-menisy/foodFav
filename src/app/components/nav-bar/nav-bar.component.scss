@@ -1,0 +1,21 @@
+@import "../../../styles.scss";
+:host {
+  .badge {
+    font-size: convert(8);
+    margin: 0;
+  }
+  .nav-link {
+    @include transition;
+    &.active {
+      border-radius: convert(3);
+      color: $mainColor;
+      background: rgb(0 0 0 / 0.03);
+      font: {
+        weight: 700;
+      }
+    }
+  }
+  nav {
+   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 0.05);
+  }
+}

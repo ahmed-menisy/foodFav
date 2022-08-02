@@ -1,0 +1,13 @@
+<div class="container py-5">
+   <div class="row gy-3 row-cols-2 justify-content-center">
+      <div *ngFor="let item of favFood" class="col" >
+         <div class="item h-100 border p-1 rounded hstack" [routerLink]="['/details',item.recipe_id]" >
+            <img [src]="item.image_url" class="rounded-start  image-fav" [alt]="item.title" [title]="item.title">
+            <div class="titl ms-3">
+               <h2 class="text-muted h6">{{item.title}}</h2>
+            <p>{{item.publisher}}</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

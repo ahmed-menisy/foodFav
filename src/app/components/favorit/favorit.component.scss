@@ -1,0 +1,13 @@
+@import '../../../styles.scss';
+.image-fav {
+   width: 120px;
+   aspect-ratio: 4/3;
+}
+.item {
+   cursor: pointer;
+   @include transition;
+   &:hover {
+      background-color: rgb(0 0 0 / .05);
+      transform: scale(1.02);
+   }
+}

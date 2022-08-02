@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+// Global variable
+$fontFredoka: "Fredoka One", cursive;
+$fontTajawal: "Tajawal", sans-serif;
+$bgColor: #fff;
+$mainColor: #dc3545;
+@function convert($param) {
+  @return $param / 16 * 1rem;
+}
+@mixin transition {
+  transition: all 0.3s;
+}
+@mixin heightAndCenter {
+  display: grid;
+  place-content: center;
+  min-height: calc(100vh - 68px);
+}
+.font-f {
+  font: {
+    family: $fontFredoka;
+  }
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #ccc;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #dc3545;
+}
+body {
+  i , .navbar-brand{
+    cursor: pointer;
+  }
+  height: 100%;
+  width: 100%;
+  background-color: $bgColor;
+  font: {
+    family: $fontTajawal;
+  }
+  .sign {
+    @include heightAndCenter;
+    form {
+      width: 70vw;
+    }
+    .validtion {
+      pointer-events: none;
+      z-index: 999;
+      * {
+        margin: 0;
+      }
+    }
+  }
+  input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button {
+    display: none;
+  }
+}

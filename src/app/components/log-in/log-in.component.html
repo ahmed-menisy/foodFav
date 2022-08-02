@@ -1,0 +1,72 @@
+<section class="container sign">
+   <form [formGroup]="logIn" (ngSubmit)="logIn.valid && subLogIn(logIn)">
+     
+     <div class="row gy-3">
+       <div class="col-12 position-relative">
+         <div class="form-floating">
+           <input
+             autocomplete="off"
+             type="email"
+             id="email"
+             class="form-control"
+             formControlName="email"
+             placeholder=" "
+             #logInEm
+             [class.is-valid]="logIn.get('email')?.valid"
+           />
+           <label for="email"> E-mail </label>
+         </div>
+         <div
+           class="validtion position-absolute top-100 text-bg-danger bg-opacity-75 rounded px-1"
+           *ngIf="logIn.get('email')?.invalid && logInEm.value.length > 0"
+         >
+           <ul *ngIf="logIn.get('email')?.getError('email')">
+             <li>E-mail Invalid Format</li>
+           </ul>
+         </div>
+       </div>
+       <div class="col-12 position-relative">
+         <div class="form-floating">
+           <input
+             autocomplete="off"
+             type="password"
+             id="password"
+             class="form-control"
+             formControlName="password"
+             placeholder=" "
+             #logInPa
+             [class.is-valid]="logIn.get('password')?.valid"
+           />
+           <label for="password"> Password </label>
+         </div>
+         <div
+           class="validtion position-absolute top-100 text-bg-danger bg-opacity-75 rounded px-1"
+           *ngIf="logIn.get('password')?.invalid && logInPa.value.length > 0"
+         >
+           <ul>
+             <li *ngIf="logIn.get('password')?.getError('minlength')">
+               Minlength(2)
+             </li>
+             <li *ngIf="logIn.get('password')?.getError('maxlength')">
+               Maxlength(8)
+             </li>
+           </ul>
+         </div>
+       </div>
+       <div class="col-12">
+         <button
+           [disabled]="logIn.invalid"
+           type="submit"
+           class="btn btn-danger w-100 font-f"
+         >
+           logIn
+           <span *ngIf="isLoading">
+             <i class="fas fa-spinner fa-spin"></i>
+           </span>
+         </button>
+       </div>
+     </div>
+   </form>
+   <p class="alert alert-danger w-50 mx-auto mt-2 text-center" *ngIf="msgError">{{msgError}}</p>
+ </section>
+ 

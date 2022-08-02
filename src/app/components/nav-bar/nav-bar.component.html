@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <h1 class="navbar-brand font-f fs-3 mb-0" routerLink="/">Meal <span class="text-danger">.</span></h1>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <ng-container *ngIf="!isLogIn">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" routerLink="/login" routerLinkActive="active">LogIn</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" routerLink="/signup" routerLinkActive="active">SignUp</a>
+          </li>
+        </ng-container>
+        <li class="nav-item " *ngIf="isLogIn">
+          <a class="nav-link position-relative" aria-current="page" >
+         {{userInfo.first_name}}
+          </a>
+        </li>
+        <li class="nav-item hstack" *ngIf="isLogIn">
+          <a class="nav-link position-relative" aria-current="page" routerLink="/favorit">
+            <i class="fa-brands fa-gratipay  fa-xl">
+             <span class="badge text-bg-danger position-absolute top-0 end-0">{{numberFav ? numberFav:''}}</span>
+            </i>
+          </a>
+          <span class="ms-2" (click)="logOut()" > <i class="fa-solid fa-right-from-bracket"></i> </span>
+        </li>
+      </ul>
+     
+    </div>
+  </div>
+</nav>
